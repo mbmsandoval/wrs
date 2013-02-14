@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0" xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+	<entity name="Country" class="data.entities.Country" access="FIELD">
+        <named-query name="Country.minimalInfoFromFindAllContinentsAndGroups">
+			<query>SELECT c.cntryid, c.isoabbr, c.isofull FROM Country c WHERE c.continental = true</query>
+			<hint name="eclipselink.query-results-cache" value="true" />
+			<hint name="eclipselink.read-only" value="true" />
+		</named-query>
+		<named-query name="Country.minimalInfoFromFindAllCountries">
+			<query>SELECT c.cntryid, c.isoabbr, c.isofull FROM Country c WHERE c.continental = false</query>
+			<hint name="eclipselink.query-results-cache" value="true" />
+			<hint name="eclipselink.read-only" value="true" />
+		</named-query>
+	</entity>
+	
+	<entity name="Variable" class="data.entities.Variable" access="FIELD">
+        <named-query name="Variable.minimalInfoFromFindAllVariables">
+			<query>SELECT v.variableid, v.varabbr, v.varname FROM Variable v</query>
+			<hint name="eclipselink.query-results-cache" value="true" />
+			<hint name="eclipselink.read-only" value="true" />
+		</named-query>
+	</entity>
+		
+	<entity name="Source" class="data.entities.Source" access="FIELD">
+        <named-query name="Source.minimalInfoFromFindAllSources">
+			<query>SELECT s.sourceid, s.srcabbr, s.srcfull FROM Source s</query>
+			<hint name="eclipselink.query-results-cache" value="true" />
+			<hint name="eclipselink.read-only" value="true" />		
+		</named-query>
+	</entity>
+	
+	<entity name="VariablesWithValueFromSource" class="data.entities.VariablesWithValueFromSource" access="FIELD">
+        <named-query name="VariablesWithValueFromSource.findAllPairsOfVariableIdsAndSourceIds">
+			<query>SELECT v.variableid, v.sourceid FROM VariablesWithValueFromSource v</query>
+			<hint name="eclipselink.query-results-cache" value="true" />
+			<hint name="eclipselink.read-only" value="true" />
+		</named-query>
+	</entity>
+	
+</entity-mappings>
+
+  

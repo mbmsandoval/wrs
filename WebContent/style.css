@@ -1,0 +1,114 @@
+html,body,div,dl,dt,dd,ul,li,ol,pre,code,form,legend,input,textarea,p,blockquote,th,td,img
+	{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	min-height: 100%;
+	position: relative;
+	color: #121212;
+	font-family: Corbel, Verdana, Geneva, sans-serif;
+	background: gray url('images/body-background.png') 0 0 repeat-x
+}
+
+img {
+	border: 0;
+}
+
+a:link,a:visited,a:active {
+	font-family: Corbel, Verdana, Geneva, sans-serif;
+	color: #1c97d7;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+div#page-l {
+	padding: 0;
+	margin: 0 auto;
+	text-align: left;
+	font-size: 0.85em;
+	max-width: 992px;
+	min-width: 992px;
+	line-height: 150%;
+}
+
+div#page-r {
+	padding: 0;
+}
+
+div {
+	display: block;
+}
+
+div#top-header {
+	position: relative;
+	width: 100%;
+	height: 124px;
+	background: #5a980b url('images/header-background.png') right top
+		no-repeat;
+	border-bottom: 1px solid #fff;
+}
+
+div#top-header-left {
+	position: absolute;
+	top: 0;
+	left: -213px;
+	height: 124px;
+	width: 213px;
+	background:
+		url('images/top-header-left-background.png'')
+		0 0 no-repeat;
+}
+
+div#top-header-right {
+	position: absolute;
+	top: 0;
+	right: -86px;
+	height: 85px;
+	width: 86px;
+	background:		
+		0 0 no-repeat;
+}
+
+div#top-header div#logo {
+	float: left;
+	width: 285px;
+	text-align: left;
+	line-height: normal;
+	margin: 0;
+	padding: 0;
+}
+
+div#top-header div#app-title {
+	vertical-align: top;
+	position: absolute;
+	font-family: Corbel, Verdana, Geneva, sans-serif;
+	font-weight: normal;
+	color: white;
+	bottom: 2px;
+	left: 2px;
+	z-index: 120;
+	width: 988px;
+	height: 45px;
+	margin: 0;
+	padding: 0;
+	padding-left: 1em;
+}
+
+div#content {
+	margin-top: 0;
+	padding: 0;
+	background: #fff;
+	border: 1px solid #b6b6b6;
+}
+
+.checkListLabel {
+	border-bottom: 0;
+	padding: 0.2em 0.2em 0.2em 25px;
+}
+
+.checkListLabel:hover,.checkListLabel.hover {
+	background: #5a980b;
+	color: #fff;
+}

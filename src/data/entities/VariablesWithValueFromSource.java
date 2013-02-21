@@ -14,9 +14,19 @@ public class VariablesWithValueFromSource implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(unique=true, nullable=false)
 	private int id;
 
 	private int sourceid;
+
+	@Column(length=10)
+	private String srccode;
+
+	@Column(length=45)
+	private String unit;
+
+	@Column(length=45)
+	private String varabbr;
 
 	private int variableid;
 
@@ -37,6 +47,30 @@ public class VariablesWithValueFromSource implements Serializable {
 
 	public void setSourceid(int sourceid) {
 		this.sourceid = sourceid;
+	}
+
+	public String getSrccode() {
+		return this.srccode;
+	}
+
+	public void setSrccode(String srccode) {
+		this.srccode = srccode;
+	}
+
+	public String getUnit() {
+		return this.unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public String getVarabbr() {
+		return this.varabbr;
+	}
+
+	public void setVarabbr(String varabbr) {
+		this.varabbr = varabbr;
 	}
 
 	public int getVariableid() {

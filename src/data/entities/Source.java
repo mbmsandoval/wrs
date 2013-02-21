@@ -14,20 +14,28 @@ public class Source implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(unique=true, nullable=false)
 	private int sourceid;
 
+	@Column(length=45)
 	private String srcabbr;
 
+	@Column(length=45)
 	private String srcdescription;
 
+	@Column(length=45)
 	private String srcdetails;
 
+	@Column(length=45)
 	private String srcfull;
 
+	@Column(length=45)
 	private String srcremarks;
 
+	@Column(length=45)
 	private String srctype;
 
+	@Column(length=45)
 	private String srcurl;
 
 	public Source() {

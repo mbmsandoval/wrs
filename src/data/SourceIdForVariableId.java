@@ -3,7 +3,7 @@ package data;
 import java.util.Hashtable;
 import java.util.Vector;
 
-public class SourceIdForVariableId extends Hashtable<Integer, Vector<Integer>> {
+public class SourceIdForVariableId extends Hashtable<String, Vector<String>> {
 
 	/**
 	 * 

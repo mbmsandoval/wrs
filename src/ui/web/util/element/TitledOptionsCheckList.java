@@ -595,7 +595,7 @@ public class TitledOptionsCheckList extends Field {
 				if (isReadonly() || isDisabled()) {
 					buffer.appendAttributeDisabled();
 				}
-				buffer.elementEnd();
+				buffer.elementEnd();				
 				buffer.appendEscaped(option.getLabel());
 
 				if (sortable) {

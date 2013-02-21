@@ -9,7 +9,7 @@ function handleChange(checklistNames, form) {
 					.getElementById(checklistName + '_size');
 			if (null != containerOfTotalOptionsOnChecklist) {
 				resetChecklistOptions(checklistName,
-						containerOfTotalOptionsOnChecklist);
+						containerOfTotalOptionsOnChecklist, false);
 			}
 		}
 	}
@@ -17,13 +17,22 @@ function handleChange(checklistNames, form) {
 	form.submit();
 }
 
+function selectDeselectAll(checklistName, checkValue) {
+	containerOfTotalOptionsOnChecklist = document.getElementById(checklistName
+			+ '_size');
+	if (null != containerOfTotalOptionsOnChecklist) {
+		resetChecklistOptions(checklistName,
+				containerOfTotalOptionsOnChecklist, checkValue);
+	}
+}
+
 function resetChecklistOptions(checklistName,
-		containerOfTotalOptionsOnChecklist) {
+		containerOfTotalOptionsOnChecklist, checkValue) {
 	var i, checkboxOnList;
 	var totalOptionsOnChecklist = containerOfTotalOptionsOnChecklist.value;
 	for (i = 0; i < totalOptionsOnChecklist; i++) {
 		checkboxOnList = document.getElementById(checklistName + "_" + i);
-		checkboxOnList.checked = false;
+		checkboxOnList.checked = checkValue;
 	}
 }
 

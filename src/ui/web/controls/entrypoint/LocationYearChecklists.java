@@ -71,6 +71,23 @@ public class LocationYearChecklists extends SimpleFieldSet {
 		locationFieldSet.setLegend("");
 		locationFieldSet.setShowBorder(false);
 
+		SimpleFieldSet locationListHeader = new SimpleFieldSet(
+				"Location List Header");
+		locationListHeader.setShowBorder(false);
+		locationListHeader.setLegend("");
+		locationListHeader.setLabel("");
+		locationListHeader.setColumns(2);
+
+		Checkbox locationListSelectDeselectAll = new Checkbox(
+				"locationListSelectAll");
+		locationListSelectDeselectAll.setLabel("");
+		locationListSelectDeselectAll.setAttribute("onchange",
+				"selectDeselectAll('countryOrContinent', this.checked);");
+
+		
+		locationListHeader.add(new Label("label", "Select/Deselect All"));
+		locationListHeader.add(locationListSelectDeselectAll);
+
 		locationSearchField.setAttribute("id", "countryOrContinent_search");
 		ImageButton locationSearchButton = new ImageButton("Search Location",
 				"images/icon/search.png",
@@ -93,6 +110,7 @@ public class LocationYearChecklists extends SimpleFieldSet {
 		locationSearchFieldSet.add(locationSearchStringStart, 2);
 
 		locationFieldSet.add(locationType, 2);
+		locationFieldSet.add(locationListHeader,2);
 		locationFieldSet.add(countryOrContinent, 2);
 		locationFieldSet.add(locationSearchFieldSet);
 
@@ -120,8 +138,26 @@ public class LocationYearChecklists extends SimpleFieldSet {
 		yearSearchFieldSet.add(yearSearchButton);
 		yearSearchFieldSet.add(yearSearchStringStart, 2);
 
-		String labelText = "&nbsp;Year";
-		yearFieldSet.add(new Label("label", labelText), 2);
+		SimpleFieldSet yearListHeader = new SimpleFieldSet("Year List Header");
+		yearListHeader.setColumns(3);
+		yearListHeader.setShowBorder(false);
+		yearListHeader.setLegend("");
+		yearListHeader.setLabel("");
+
+		Checkbox yearListSelectDeselectAll = new Checkbox("yearListSelectAll");
+		yearListSelectDeselectAll.setLabel("");
+		yearListSelectDeselectAll.setAttribute("onchange",
+				"selectDeselectAll('year', this.checked);");
+
+		
+		yearListHeader.add(new Label("label",
+				"Select/Deselect All"));
+		yearListHeader.add(yearListSelectDeselectAll);
+
+		Label yearLabel = new Label("label", "&nbsp;Year");
+		yearLabel.setTextAlign("center");
+		yearFieldSet.add(yearLabel, 2);
+		yearFieldSet.add(yearListHeader, 2);
 		yearFieldSet.add(year, 2);
 		yearFieldSet.add(yearSearchFieldSet);
 

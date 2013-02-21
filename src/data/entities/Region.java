@@ -5,17 +5,17 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the country database table.
+ * The persistent class for the region database table.
  * 
  */
 @Entity
-@Table(name="country")
-public class Country implements Serializable {
+@Table(name="region")
+public class Region implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(unique=true, nullable=false)
-	private int cntryid;
+	private int regionid;
 
 	@Column(length=10)
 	private String continent;
@@ -54,17 +54,15 @@ public class Country implements Serializable {
 	@Column(length=255)
 	private String wb;
 
-	private byte withdata;
-
-	public Country() {
+	public Region() {
 	}
 
-	public int getCntryid() {
-		return this.cntryid;
+	public int getRegionid() {
+		return this.regionid;
 	}
 
-	public void setCntryid(int cntryid) {
-		this.cntryid = cntryid;
+	public void setRegionid(int regionid) {
+		this.regionid = regionid;
 	}
 
 	public String getContinent() {
@@ -169,14 +167,6 @@ public class Country implements Serializable {
 
 	public void setWb(String wb) {
 		this.wb = wb;
-	}
-
-	public byte getWithdata() {
-		return this.withdata;
-	}
-
-	public void setWithdata(byte withdata) {
-		this.withdata = withdata;
 	}
 
 }

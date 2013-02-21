@@ -29,6 +29,12 @@ public class DataGetter {
 				.createNamedQuery(Constants.queryNameMinimalInfoFromFindAllContinentsAndGroups);
 		return QueryUtil.getQueryResultsForVariousFields(query);
 	}
+	
+	public List<Object[]> getSubnationalListMinimalInfo() {
+		Query query = em
+				.createNamedQuery(Constants.queryNameMinimalInfoFromFindAllSubnationalCountries);
+		return QueryUtil.getQueryResultsForVariousFields(query);
+	}
 
 	public List<Object[]> getVariableListMinimalInfo() {
 		Query query = em
@@ -42,43 +48,103 @@ public class DataGetter {
 		return QueryUtil.getQueryResultsForVariousFields(query);
 	}
 
+	// public SourceIdForVariableId getSourceListForVariables() {
+	// SourceIdForVariableId sourceListForVariables = new
+	// SourceIdForVariableId();
+	// Query query = em
+	// .createNamedQuery(Constants.queryNameFindAllPairsOfVariableIdsAndSourceIds);
+	//
+	// List<Object[]> list = QueryUtil.getQueryResultsForVariousFields(query);
+	//
+	// for (Object[] listElement : list) {
+	// Integer variableId = new Integer(-1);
+	// try {
+	// variableId = (Integer) listElement[0];
+	// } catch (Exception e) {
+	// }
+	//
+	// Integer sourceId = new Integer(-1);
+	// try {
+	// sourceId = (Integer) listElement[1];
+	// } catch (Exception e) {
+	// }
+	//
+	// if ((0 < variableId) && (0 < sourceId)) {
+	// Vector<Integer> sourceIdList = sourceListForVariables
+	// .get(variableId);
+	// if (null == sourceIdList) {
+	// sourceIdList = new Vector<Integer>();
+	// }
+	// sourceIdList.addElement(sourceId);
+	//
+	// sourceListForVariables.put(variableId, sourceIdList);
+	// }
+	// }
+	//
+	// return sourceListForVariables;
+	// }
+
 	public SourceIdForVariableId getSourceListForVariables() {
 		SourceIdForVariableId sourceListForVariables = new SourceIdForVariableId();
 		Query query = em
-				.createNamedQuery(Constants.queryNameFindAllPairsOfVariableIdsAndSourceIds);
+				.createNamedQuery(Constants.queryNameFindAllPairsOfVariablesAndSources);
 
 		List<Object[]> list = QueryUtil.getQueryResultsForVariousFields(query);
 
 		for (Object[] listElement : list) {
-			Integer variableId = new Integer(-1);
+			String varAbbr = null;
 			try {
-				variableId = (Integer) listElement[0];
+				varAbbr = (String) listElement[0];
 			} catch (Exception e) {
 			}
 
-			Integer sourceId = new Integer(-1);
+			String codeOfSource = null;
 			try {
-				sourceId = (Integer) listElement[1];
+				codeOfSource = (String) listElement[1];
 			} catch (Exception e) {
 			}
 
-			if ((0 < variableId) && (0 < sourceId)) {
-				Vector<Integer> sourceIdList = sourceListForVariables
-						.get(variableId);
+			if ((null != varAbbr) && (null != codeOfSource)) {
+				Vector<String> sourceIdList = sourceListForVariables
+						.get(varAbbr);
 				if (null == sourceIdList) {
-					sourceIdList = new Vector<Integer>();
+					sourceIdList = new Vector<String>();
 				}
-				sourceIdList.addElement(sourceId);
+				sourceIdList.addElement(codeOfSource);
 
-				sourceListForVariables.put(variableId, sourceIdList);
+				sourceListForVariables.put(varAbbr, sourceIdList);
 			}
 		}
 
 		return sourceListForVariables;
 	}
 
-	public Integer[] getListOfSourcesForVariable(int variableId) {
-		Integer[] listOfSourcesForVariable = null;
+	// public Integer[] getListOfSourcesForVariable(int variableId) {
+	// Integer[] listOfSourcesForVariable = null;
+	//
+	// // NOTE: Get sourceListForVariables from session
+	// SourceIdForVariableId sourceListForVariables = new
+	// SourceIdForVariableId();
+	//
+	// try {
+	//
+	// if (null != sourceListForVariables) {
+	// Vector<Integer> listOfSources = sourceListForVariables
+	// .get(new Integer(variableId));
+	// if (null != listOfSources) {
+	// listOfSourcesForVariable = (Integer[]) listOfSources
+	// .toArray();
+	// }
+	// }
+	//
+	// } catch (Exception e) {
+	// }
+	//
+	// return listOfSourcesForVariable;
+	// }
+
+	public String[] getListOfSourcesForVariable(String variableId) {
+		String[] listOfSourcesForVariable = null;
 
 		// NOTE: Get sourceListForVariables from session
 		SourceIdForVariableId sourceListForVariables = new SourceIdForVariableId();
@@ -86,10 +152,10 @@ public class DataGetter {
 		try {
 
 			if (null != sourceListForVariables) {
-				Vector<Integer> listOfSources = sourceListForVariables
-						.get(new Integer(variableId));
+				Vector<String> listOfSources = sourceListForVariables
+						.get(variableId);
 				if (null != listOfSources) {
-					listOfSourcesForVariable = (Integer[]) listOfSources
+					listOfSourcesForVariable = (String[]) listOfSources
 							.toArray();
 				}
 			}

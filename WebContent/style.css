@@ -56,9 +56,7 @@ div#top-header-left {
 	left: -213px;
 	height: 124px;
 	width: 213px;
-	background:
-		url('images/top-header-left-background.png'')
-		0 0 no-repeat;
+	background: url('images/top-header-left-background.png' ') 0 0 no-repeat;
 }
 
 div#top-header-right {
@@ -67,8 +65,7 @@ div#top-header-right {
 	right: -86px;
 	height: 85px;
 	width: 86px;
-	background:		
-		0 0 no-repeat;
+	background: 0 0 no-repeat;
 }
 
 div#top-header div#logo {
@@ -101,6 +98,10 @@ div#content {
 	padding: 0;
 	background: #fff;
 	border: 1px solid #b6b6b6;
+}
+
+input[type="checkbox"] {
+	vertical-align: middle;
 }
 
 .checkListLabel {

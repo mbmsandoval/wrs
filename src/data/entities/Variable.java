@@ -14,22 +14,29 @@ public class Variable implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(unique=true, nullable=false)
 	private int variableid;
 
+	@Column(length=45)
 	private String varabbr;
 
+	@Column(length=75)
 	private String vardescription;
 
 	private int vargroupid;
 
 	private int varhierarchy;
 
+	@Column(length=45)
 	private String varname;
 
+	@Column(length=45)
 	private String varremarks;
 
+	@Column(length=45)
 	private String varunit;
 
+	@Column(length=45)
 	private String varvalue;
 
 	public Variable() {

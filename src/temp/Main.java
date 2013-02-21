@@ -138,19 +138,39 @@ public class Main {
 
 	}
 
+	// public static void displaySourceListForVariables(
+	// SourceIdForVariableId sourceListForVariables) {
+	// Set<Integer> variableIds = sourceListForVariables.keySet();
+	// System.out
+	// .println("SourceId lists are found in the database for variableIds: "
+	// + variableIds.size());
+	//
+	// Iterator<Integer> keysIterator = variableIds.iterator();
+	//
+	// while (keysIterator.hasNext()) {
+	// Integer variableId = (Integer) keysIterator.next();
+	// System.out.println("VariableId: " + variableId);
+	// Vector<Integer> sourceIds = sourceListForVariables.get(variableId);
+	// System.out.println("\tSourceIds: ");
+	// for (int i = 0; i < sourceIds.size(); i++) {
+	// System.out.println("\t\t" + sourceIds.elementAt(i));
+	// }
+	// }
+	// }
+
 	public static void displaySourceListForVariables(
 			SourceIdForVariableId sourceListForVariables) {
-		Set<Integer> variableIds = sourceListForVariables.keySet();
+		Set<String> variableIds = sourceListForVariables.keySet();
 		System.out
 				.println("SourceId lists are found in the database for variableIds: "
 						+ variableIds.size());
 
-		Iterator<Integer> keysIterator = variableIds.iterator();
+		Iterator<String> keysIterator = variableIds.iterator();
 
 		while (keysIterator.hasNext()) {
-			Integer variableId = (Integer) keysIterator.next();
+			String variableId = (String) keysIterator.next();
 			System.out.println("VariableId: " + variableId);
-			Vector<Integer> sourceIds = sourceListForVariables.get(variableId);
+			Vector<String> sourceIds = sourceListForVariables.get(variableId);
 			System.out.println("\tSourceIds: ");
 			for (int i = 0; i < sourceIds.size(); i++) {
 				System.out.println("\t\t" + sourceIds.elementAt(i));

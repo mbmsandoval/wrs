@@ -85,6 +85,7 @@ public class EntrypointOptionsProvider {
 
 		List<TitledOption> countryOptions = null;
 		List<TitledOption> continentOrRegionOptions = null;
+		List<TitledOption> subnationalOptions = null;
 
 		try {
 			countryOptions = Collections
@@ -93,12 +94,18 @@ public class EntrypointOptionsProvider {
 			continentOrRegionOptions = Collections
 					.unmodifiableList(prepareLocationOptionList(dataGetter
 							.getContinentAndGroupListMinimalInfo()));
+			subnationalOptions = Collections
+					.unmodifiableList(prepareLocationOptionList(dataGetter
+							.getSubnationalListMinimalInfo()));
 		} catch (Exception e) {
+			System.out.println("ERROR on getLocationOptions:");
+			e.printStackTrace();
 		}
 		locations.put(Constants.locationTypeCodeCountry, countryOptions);
 		locations.put(Constants.locationTypeCodeContinentOrRegion,
 				continentOrRegionOptions);
-		locations.put(Constants.locationTypeCodeSubnational, countryOptions);
+		locations
+				.put(Constants.locationTypeCodeSubnational, subnationalOptions);
 
 		return locations;
 
@@ -117,8 +124,14 @@ public class EntrypointOptionsProvider {
 					String isoAbbr = (String) listElement[1];
 					String isoFull = (String) listElement[2];
 					if (0 < countryId) {
-						list.add(new TitledOption("" + countryId.intValue(),
-								isoAbbr, isoFull));
+						if (!isoAbbr.equals("-")) {
+							// list.add(new TitledOption(
+							// "" + countryId.intValue(), isoAbbr, isoFull));
+							list.add(new TitledOption(
+									"" + countryId.intValue(),
+									((isoFull != null) && (isoFull.length() > 1)) ? isoFull
+											: isoAbbr, isoFull));
+						}
 					}
 
 				}
@@ -200,8 +213,11 @@ public class EntrypointOptionsProvider {
 					String varName = (String) listElement[1];
 					String varDesc = (String) listElement[2];
 					if (0 < varId) {
-						list.add(new TitledOption("" + varId.intValue(),
-								varName, varDesc));
+						// list.add(new TitledOption("" + varId.intValue(),
+						// varName, varDesc));
+						// list.add(new TitledOption(varName, varName,
+						// varDesc));
+						list.add(new TitledOption(varName, varDesc, varDesc));
 					}
 
 				}
@@ -239,8 +255,9 @@ public class EntrypointOptionsProvider {
 					String srcName = (String) listElement[1];
 					String srcDesc = (String) listElement[2];
 					if (0 < srcId) {
-						list.add(new TitledOption("" + srcId.intValue(),
-								srcName, srcDesc));
+						// list.add(new TitledOption("" + srcId.intValue(),
+						// srcName, srcDesc));
+						list.add(new TitledOption(srcName, srcName, srcDesc));
 					}
 
 				}
